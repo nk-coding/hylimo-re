@@ -1,16 +1,16 @@
 # HyLiMo Requirements Elicitation Information & Overview
 
-> **TL;DR**: HyLiMo is a Tool for hybrid (both textual and graphical) modeling of UML class diagrams. During the meeting, we discuss what the DSL for class diagrams could look like, and which features can be supported in the graphical view.
+> **TL;DR**: HyLiMo is a Tool for hybrid (both textual and graphical) modeling of UML class diagrams. During the meeting, we discuss what the DSL _(textual concrete syntax)_ for class diagrams could look like, and which features can be supported in the graphical view.
 
 ## Background
 
 Creating UML class diagrams is a common task for software engineers.
-Therefore, several tools already exist for this purpose, e.g. MermaidJS or diagrams.net.
+Therefore, several tools already exist for this purpose, e.g., MermaidJS or diagrams.net.
 Most of these tools can be put into two categories:
-1. **Descriptive DSL, Autolayout**: A External DSL is used to describe the structure of the Diagram, the graphical representation is then generated based on the given DSL text. Typically, manual layouting is not at all or is very limited supported.
+1. **Descriptive DSL, Autolayout**: An External DSL is used to describe the structure of the Diagram, the graphical representation is then generated based on the given DSL text. Typically, manual layouting is not at all or is very limited supported.
 1. **Graphical editor**: The diagram is created using a graphical editor, typically with completely manual layouting (or limited autolayout support)
 
-As both approaches have their benefits, recently, tools using hybrid/blended modeling appeared, e.g. [D2](https://d2lang.com/tour/intro/) and [Structurizr](https://structurizr.com/). These tools typically use a descriptive external DSL, and allow to add/remove and update the contents of diagram elements (e.g. classes) in the graphical view.
+As both approaches have their benefits, recently, tools using hybrid/blended modeling appeared, e.g., [D2](https://d2lang.com/tour/intro/) and [Structurizr](https://structurizr.com/). These tools typically use a descriptive external DSL, and allow to add/remove and update the contents of diagram elements (e.g., classes) in the graphical view.
 
 However, manual & precise layouting is **not supported** as only autolayouting is implemented, forcing users to use less efficient approaches when precise or custom layouting is required.
 
@@ -21,10 +21,10 @@ HyLiMo is a tool for creating diagrams using a hybrid editor consisting of a
 - graphical view to manipulate parts of the diagram, most important layouting
 
 Technically, it works like this:
-- The diagram is described using an embedded/internal DSL in the general-purpose scripting language Syncscript.
+- The diagram is described using an embedded/internal DSL in the general-purpose scripting language [SyncScript](#syncscript).
 - The DSL text is executed to generate the diagram model.
 - The model is displayed in the graphical view.
-- When the user manipulates the graphical view, e.g. by moving a class, the DSL code is updated to correspond to the graphical changes.
+- When the user manipulates the graphical view, e.g., by moving a class, the DSL code is updated to correspond to the graphical changes.
 - Then, the User can do more textual or graphical changes.
 
 To see what this flow looks like, have a look at the following video:
@@ -49,7 +49,7 @@ I will use the RE interviews to collect features and (design) ideas regarding
 - the graphical editor
 
 In a one-on-one format, I will explain the general concept again, and give a demonstration of the already working parts.
-Then, we will discuss how the DSL could look like, based on some existing ideas (see below), which graphical editing features should be supported, and how those interactive features can be implemented.
+Then, we will discuss how the DSL _(textual concrete syntax)_ could look like, based on some existing ideas (see below), which graphical editing features should be supported, and how those interactive features can be implemented.
 
 Based on the protocols of those meetings and my own ideas, I will then create a questionnaire to
 - evaluate the importance of specific features
@@ -112,14 +112,14 @@ Of course, you can also bring and/or come up with your ideas for these or relate
     - support multiple separated (by line) areas (of fields and methods) in a class?
     - which visibility modifiers should be supported
     - how to declare a relation between classes (or in general line segments)
-        - segments can be of different types, e.g. bezier, direct line, ...
-        - some helpers could make defining those simpler, e.g. something like `polyline(p1, p2, p3)`
+        - segments can be of different types, e.g., bezier, direct line, ...
+        - some helpers could make defining those simpler, e.g., something like `polyline(p1, p2, p3)`
     - how to support stereotypes for classes (and which?)
 - Graphical view
     - how & when to display the points which can be manipulated by moving around
-    - which features, apart from moving (classes and other points) and resizing (classes) should be supported (e.g. changing text values)
-    - should control features (e.g. resize helpers, movable points) scale with the zoom level of the diagram or not?
-- SyncScript
+    - which features, apart from moving (classes and other points) and resizing (classes) should be supported (e.g., changing text values)
+    - should control features (e.g., resize helpers, movable points) scale with the zoom level of the diagram or not?
+- [SyncScript](#syncscript)
     - (context: in SyncScript, everything is an expression) should look control structures evaluate to
         - null
         - the last inner value
@@ -344,4 +344,8 @@ div = {
   }
   someNumbers.add(100)
   lastElement = someNumbers.remove()
+  ```
+- **error**
+  ```
+  error("Something went wrong")
   ```
