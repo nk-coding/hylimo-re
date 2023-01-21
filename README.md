@@ -129,9 +129,72 @@ Of course, you can also bring and/or come up with your ideas for these or relate
 
 You can find the hosted version of HyLiMo here: https://hylimo.github.io
 
-You can put there [this example diagram](TODO).
+To get started, as an example, you can insert the content of the following file on the left side:
 
-:warning: Caution: Currently, only my underlying graphics framework and parts of the graphical editor are implemented. You can see here how one can use this framework to create diagram elements. Later, the user will use the DSL designed during these RE meetings to create the diagram, this DSL will then use the underlying graphics framework you see here (and not the modeling user!).
+:warning: Caution: Currently, only the underlying graphics framework and parts of the graphical editor are implemented. You can see here how one can use this framework to create diagram elements. Later, the user will use the DSL designed during these RE meetings to create the diagram, this DSL will then use the underlying graphics framework you see here (and not the modeling user!).
+
+```
+generateClass = {
+    fields = list("+x: Int", "~y: String")
+    methods = list("+test(x: Int): String")
+
+    classContents = list(
+        text(contents = list(span(text = "MyClass" + it)), class = list("title")),
+        rect(class = list("separator"))
+    )
+    fields.forEach {
+        classContents.add(text(contents = list(span(text = it))))
+    }
+    classContents.add(rect(class = list("separator")))
+    methods.forEach {
+        classContents.add(text(contents = list(span(text = it))))
+    }
+    rect(class = list("class"), content = vbox(contents = classContents))
+}
+
+tmp = 300
+p1 = absolutePoint(x = 20, y = 20)
+p2 = relativePoint(target=p1, offsetX = 200, offsetY = tmp + 100)
+classElement = canvasElement(pos = p1, content = generateClass(0))
+classElement2 = canvasElement(pos = p2, content = generateClass(1))
+parentCanvas = canvas(contents = list(p1, p2, classElement, classElement2))
+
+primary = "white"
+lineWidth = 2
+
+diagram(
+    parentCanvas,
+    styles {
+        type("span") {
+            fill = primary
+        }
+        class("class") {
+            stroke = primary
+            strokeWidth = lineWidth
+            width = 300
+            type("vbox") {
+                margin = 5
+            }
+        }
+        class("title") {
+            hAlign = "center"
+            type("span") {
+                fontWeight = "bold"
+                fontStyle = "italic"
+            }
+        }
+        class("separator") {
+            marginTop = 5
+            marginBottom = 5
+            marginLeft = -5
+            marginRight = -5
+            height = lineWidth
+            fill = primary
+        }
+    },
+    list(robotoFontFamily)
+)
+```
 
 ## SyncScript
 
