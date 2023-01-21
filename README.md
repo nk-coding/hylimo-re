@@ -12,7 +12,7 @@ Most of these tools can be put into two categories:
 
 As both approaches have their benefits, recently, tools using hybrid/blended modeling appeared, e.g., [D2](https://d2lang.com/tour/intro/) and [Structurizr](https://structurizr.com/). These tools typically use a descriptive external DSL, and allow to add/remove and update the contents of diagram elements (e.g., classes) in the graphical view.
 
-However, manual & precise layouting is **not supported** as only autolayouting is implemented, forcing users to use less efficient approaches when precise or custom layouting is required.
+However, manual & precise layouting is **not supported** in the DSL, forcing users to use less efficient approaches when precise or custom layouting is required.
 
 ## HyLiMo
 
