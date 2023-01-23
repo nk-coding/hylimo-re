@@ -76,7 +76,7 @@ classdiagram {
     }
 
     styles {
-        cls("class") {
+        class("class") {
             minWidth = 100
             maxWidth = 600
         }
@@ -331,9 +331,9 @@ div = {
     println("body")
   }
   ```
-- **obj**
+- **object**
   ```
-  aPoint = obj(x = 10, y = 20)
+  aPoint = object(x = 10, y = 20)
   ```
 - **list**
   ```
