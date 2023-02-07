@@ -155,8 +155,8 @@ generateClass = {
 tmp = 300
 p1 = absolutePoint(x = 20, y = 20)
 p2 = relativePoint(target=p1, offsetX = 200, offsetY = tmp + 100)
-classElement = canvasElement(pos = p1, content = generateClass(0))
-classElement2 = canvasElement(pos = p2, content = generateClass(1))
+classElement = canvasElement(pos = p1, content = generateClass(0), scopes = object())
+classElement2 = canvasElement(pos = p2, content = generateClass(1), scopes = object())
 parentCanvas = canvas(contents = list(p1, p2, classElement, classElement2))
 
 primary = "white"
