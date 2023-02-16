@@ -192,7 +192,7 @@ diagram(
             fill = primary
         }
     },
-    list(robotoFontFamily)
+    list(defaultFonts.roboto)
 )
 ```
 
